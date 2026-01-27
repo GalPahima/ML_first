@@ -1,0 +1,12 @@
+{
+    "app_name": "ML Green & Sweet",
+    "telegram_token": "8345171536:AAGtltYFy-L4KhYs3GCOy7hwClwAo_YY38E",
+    "telegram_chat_id": "-8345171536",
+    "theme": {
+        "primary": "#2D6A4F",
+        "secondary": "#D8F3DC",
+        "text": "#1B4332"
+    },
+    "plant_types": ["Monstera", "Alocasia", "Philodendron", "Anthurium"],
+    "conditions": ["Low Light", "Bright Indirect", "Full Sun"]
+}

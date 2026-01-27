@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Green & Sweet Inventory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    
+    <header>
+        <h1>ML Green & Sweet</h1>
+        <p>Manage your urban jungle</p>
+    </header>
+
+    <main class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Size</th>
+                    <th>Condition</th>
+                    <th>Supply</th>
+                </tr>
+            </thead>
+            <tbody>
+				{% for plant in plants %}
+				<tr>
+					<td>{{ plant[1] }}</td>
+					<td>{{ plant[2] }}</td>
+					<td>{{ plant[3] }}</td>
+					<td>{{ plant[5] }} in stock</td>
+					<td>
+						<form action="/order/{{ plant[0] }}" method="POST" style="display:flex; gap:5px;">
+							<input type="text" name="user_name" placeholder="Your Name" required>
+							<input type="text" name="user_contact" placeholder="Telegram/Phone" required>
+							<button type="submit">Order</button>
+						</form>
+					</td>
+				</tr>
+				{% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

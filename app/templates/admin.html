@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - ML Green & Sweet</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="admin-page">
+    <div class="container">
+        <h1>Control Center</h1>
+        <a href="/">← Back to Store</a>
+
+        <section class="add-plant-form">
+            <h2>Add New Plant</h2>
+            <form method="POST">
+                <input type="text" name="name" placeholder="Plant Name" required>
+                
+                <select name="type">
+                    {% for type in settings.plant_types %}
+                    <option value="{{ type }}">{{ type }}</option>
+                    {% endfor %}
+                </select>
+
+                <input type="text" name="size" placeholder="Size (e.g. Large)">
+                
+                <select name="condition">
+                    {% for cond in settings.conditions %}
+                    <option value="{{ cond }}">{{ cond }}</option>
+                    {% endfor %}
+                </select>
+
+                <input type="number" name="supply" placeholder="Stock Quantity">
+                <button type="submit" style="background-color: #2d6a4f; color: white;">Add to Inventory</button>
+            </form>
+        </section>
+
+        <section class="current-inventory">
+            <h2>Current Stock</h2>
+            <table>
+                {% for plant in plants %}
+                <tr>
+                    <td>{{ plant[1] }}</td>
+                    <td><a href="/delete/{{ plant[0] }}" style="color: red;">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+    </div>
+</body>
+</html>
