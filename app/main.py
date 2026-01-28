@@ -7,8 +7,8 @@ from flask import Flask, render_template, request, redirect, url_for, session
 
 load_dotenv()
 app = Flask(__name__)
+# env 
 app.secret_key = os.getenv('FLASK_SECRET_KEY')
-
 TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD')
@@ -94,7 +94,7 @@ def login():
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    # Security check: If not logged in, go to login page
+    # Security: If not logged in, go to login page
     if not session.get('logged_in'):
         return redirect(url_for('login'))
     conn = sqlite3.connect(DB_PATH)
